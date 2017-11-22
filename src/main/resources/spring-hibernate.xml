@@ -40,12 +40,13 @@
 		</property>
 	</bean>
 
+	<!-- PS:以下关于事务的配置一定不要配置这个文件中,如果果配置在下面,注解要配置到spring-mvc.xml中,否则使用@Transaction注解获取不到session -->
 	<!-- 配置一个事务管理器 -->
-	<bean id="transactionManager"
+	<!-- <bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
+	</bean> -->
 	<!-- 添加注解事物支持的配置 -->
-	<tx:annotation-driven transaction-manager="transactionManager"
-		proxy-target-class="true" />
+	<!-- <tx:annotation-driven transaction-manager="transactionManager"
+		proxy-target-class="true" /> -->
 </beans>

@@ -57,4 +57,14 @@
 	
 	<!-- 全局异常配置 -->
 	<bean id="exceptionHandler" class="com.wabao.interceptor.ManageExceptionHandler" />
+	
+	<!-- PS:关于事务的配置一定要配置这个文件中以便DispatcherServlet读取到,如果配置在之前的spring-hibernate.xml中则使用@Transaction注解获取不到session -->
+	<!-- 配置一个事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- 添加注解事物支持的配置 -->
+	<tx:annotation-driven transaction-manager="transactionManager"
+		proxy-target-class="true" />
 </beans>
